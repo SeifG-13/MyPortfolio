@@ -9,7 +9,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   
-  // ⚠️ Change "portfolio" to your GitHub repo name
   base: "/MyPortfolio/",
   
   resolve: {
