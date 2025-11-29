@@ -20,10 +20,18 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Environment
+# Environment variables - IMPORTANT: Never commit .env files!
 .env
 .env.local
-.env.*.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# Keep .env.example for documentation
+!.env.example
 
 # TypeScript
 *.tsbuildinfo
@@ -34,3 +42,10 @@ vite.config.ts.timestamp-*
 # Misc
 *.tar.gz
 *.zip
+
+# Test coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/

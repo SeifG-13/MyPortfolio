@@ -1,0 +1,22 @@
+{
+  "name": "Seif Ben Ali - Portfolio",
+  "short_name": "Seif Portfolio",
+  "description": "Software & DevOps Engineer specializing in Blockchain, IoT, and Cloud",
+  "start_url": "/MyPortfolio/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#007AFF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/MyPortfolio/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/MyPortfolio/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# robots.txt for Seif Ben Ali Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://seifg-13.github.io/MyPortfolio/sitemap.xml

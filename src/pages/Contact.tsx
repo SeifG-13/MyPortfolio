@@ -17,11 +17,19 @@ export function Contact() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
- 
-  const WEB3FORMS_KEY = "f276036e-4e23-4cfd-a698-f76e3080fb27";
+  // ✅ Use environment variable for API key
+  const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if API key is configured
+    if (!WEB3FORMS_KEY) {
+      setStatus("error");
+      setErrorMessage("Contact form is not configured. Please email me directly.");
+      return;
+    }
+    
     setStatus("loading");
     setErrorMessage("");
 
@@ -38,7 +46,7 @@ export function Contact() {
           email: formState.email,
           message: formState.message,
           from_name: "Portfolio Contact Form",
-          subject: `Nouveau message de ${formState.name} - Portfolio`,
+          subject: `New message from ${formState.name} - Portfolio`,
         }),
       });
 
@@ -48,11 +56,11 @@ export function Contact() {
         setStatus("success");
         setFormState({ name: "", email: "", message: "" });
       } else {
-        throw new Error(result.message || "Erreur lors de l'envoi");
+        throw new Error(result.message || "Error sending message");
       }
     } catch (error) {
       setStatus("error");
-      setErrorMessage("Échec de l'envoi. Veuillez réessayer ou m'envoyer un email directement.");
+      setErrorMessage("Failed to send. Please try again or email me directly.");
     }
   };
 
@@ -67,7 +75,6 @@ export function Contact() {
       setCopiedEmail(true);
       setTimeout(() => setCopiedEmail(false), 2000);
     } catch (err) {
-      // Fallback for older browsers
       const textArea = document.createElement("textarea");
       textArea.value = "seif.benali@ensi-uma.tn";
       document.body.appendChild(textArea);
@@ -146,7 +153,6 @@ export function Contact() {
 
       {/* Contact Info */}
       <div className="space-y-3">
-        {/* Email - Click to Copy */}
         <button 
           onClick={copyEmail}
           className="w-full flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-blue-200 transition-all group text-left"
@@ -169,7 +175,6 @@ export function Contact() {
           </div>
         </button>
         
-        {/* Phone - Click to Copy */}
         <button 
           onClick={copyPhone}
           className="w-full flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-green-200 transition-all group text-left"
@@ -192,7 +197,6 @@ export function Contact() {
           </div>
         </button>
 
-        {/* Location */}
         <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-50 text-orange-600">
             <MapPin className="h-5 w-5" />
