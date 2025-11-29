@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   
   // ⚠️ Change "portfolio" to your GitHub repo name
-  base: "/portfolio/",
+  base: "/MyPortfolio/",
   
   resolve: {
     alias: {
