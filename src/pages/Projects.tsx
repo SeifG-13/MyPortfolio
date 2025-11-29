@@ -237,7 +237,7 @@ const projectsData = [
     badgeBg: "bg-amber-50 dark:bg-amber-900/30",
     period: "2024",
     location: "Personal / Academic",
-    github: "https://github.com/SeifG-13/secure-sensor-dashboard",
+    github: "https://github.com/SeifG-13/Secure-Sensor-Data-Visualization",
     demo: "https://secure-sensor-data-visualization-3vjb.vercel.app"
   },
 
@@ -405,7 +405,7 @@ const projectsData = [
     badgeBg: "bg-indigo-50 dark:bg-indigo-900/30",
     period: "2023",
     location: "Personal",
-    github: "",
+    github: "https://github.com/SeifG-13/policediscordbot",
     demo: ""
   },
 
