@@ -24,7 +24,9 @@ export const translations = {
       dark: "Dark Mode",
       light: "Light Mode",
       system: "System"
-    }
+    },
+    // Browser tab title
+    pageTitle: "Seif Ben Ali | Software & DevOps Engineer"
   },
   fr: {
     nav: { home: "Accueil", about: "À propos", projects: "Projets", contact: "Contact", settings: "Paramètres" },
@@ -47,7 +49,9 @@ export const translations = {
       dark: "Mode Sombre",
       light: "Mode Clair",
       system: "Système"
-    }
+    },
+    // Browser tab title
+    pageTitle: "Seif Ben Ali | Ingénieur Logiciel & DevOps"
   },
   ar: {
     nav: { home: "الرئيسية", about: "حول", projects: "مشاريع", contact: "تواصل", settings: "الإعدادات" },
@@ -70,7 +74,9 @@ export const translations = {
       dark: "داكن",
       light: "فاتح",
       system: "النظام"
-    }
+    },
+    // Browser tab title
+    pageTitle: "سيف بن علي | مهندس برمجيات و DevOps"
   }
 };
 
@@ -82,6 +88,7 @@ interface SettingsContextType {
   setLanguage: (lang: Language) => void;
   theme: Theme;
   toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
   t: typeof translations["en"];
   dateLocale: any;
   isRTL: boolean;
@@ -105,15 +112,36 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     root.classList.remove("light", "dark");
     root.classList.add(theme);
     localStorage.setItem("theme", theme);
+    
+    // Update meta theme-color for mobile browsers
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute("content", theme === "dark" ? "#0f172a" : "#007AFF");
+    }
   }, [theme]);
 
-  // Apply Language Side Effects (RTL & Persistence)
+  // Apply Language Side Effects (RTL, Persistence, and Browser Title)
   useEffect(() => {
     const root = window.document.documentElement;
     const isArabic = language === "ar";
     root.dir = isArabic ? "rtl" : "ltr";
     root.lang = language;
     localStorage.setItem("language", language);
+    
+    // 🔥 Update browser tab title based on language
+    document.title = translations[language].pageTitle;
+    
+    // Update Open Graph title meta tag (for social sharing)
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute("content", translations[language].pageTitle);
+    }
+    
+    // Update Twitter title meta tag
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute("content", translations[language].pageTitle);
+    }
   }, [language]);
 
   const toggleTheme = () => {
@@ -130,7 +158,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       language, 
       setLanguage, 
       theme, 
-      toggleTheme, 
+      toggleTheme,
+      setTheme,
       t: translations[language],
       dateLocale,
       isRTL

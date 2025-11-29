@@ -43,6 +43,9 @@
   --animate-music-bar: music-bar 0.8s ease-in-out infinite;
 }
 
+/* ================================
+   LIGHT MODE (Default)
+   ================================ */
 :root {
   --background: 240 5% 96%;
   --foreground: 0 0% 0%;
@@ -64,6 +67,35 @@
   --input: 240 6% 90%;
   --ring: 211 100% 50%;
   --radius: 0.75rem;
+  
+  color-scheme: light;
+}
+
+/* ================================
+   DARK MODE
+   ================================ */
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 211 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 135 59% 49%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 63% 51%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 211 100% 50%;
+  
+  color-scheme: dark;
 }
 
 @layer base {
@@ -72,9 +104,15 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
   }
+  
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-hidden;
     touch-action: none;
+  }
+  
+  /* Smooth theme transition */
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .no-scrollbar::-webkit-scrollbar {
@@ -87,19 +125,75 @@
 }
 
 @layer utilities {
+  /* Light Mode Glass */
   .glass {
     @apply bg-white/80 backdrop-blur-xl border border-white/20;
   }
   
+  /* Dark Mode Glass */
   .glass-dark {
-    @apply bg-black/60 backdrop-blur-xl border border-white/10 text-white;
+    @apply bg-slate-900/80 backdrop-blur-xl border border-white/10 text-white;
+  }
+  
+  /* Adaptive Glass - changes based on theme */
+  .glass-adaptive {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20;
+  }
+  .dark .glass-adaptive {
+    @apply bg-slate-900/80 border-slate-700/50;
   }
   
   .ios-shadow {
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   }
   
+  .dark .ios-shadow {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  
   .ios-active {
     @apply active:scale-95 transition-transform duration-200;
   }
+  
+  /* Card styles for both modes */
+  .card-light {
+    @apply bg-white border border-gray-100 shadow-sm;
+  }
+  
+  .card-dark {
+    @apply bg-slate-800/50 border border-slate-700/50 shadow-lg;
+  }
+  
+  /* Text colors that adapt */
+  .text-adaptive {
+    @apply text-gray-900 dark:text-white;
+  }
+  
+  .text-adaptive-muted {
+    @apply text-gray-600 dark:text-gray-300;
+  }
+  
+  .text-adaptive-subtle {
+    @apply text-gray-400 dark:text-gray-500;
+  }
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
 }
