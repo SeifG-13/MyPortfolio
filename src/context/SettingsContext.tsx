@@ -15,7 +15,10 @@ export const translations = {
       techStack: "Tech Stack",
       finalProject: "Final Year Project",
       education: "Education",
-      viewGithub: "Click to view on GitHub →"
+      viewGithub: "Click to view on GitHub →",
+      country: "Tunisia 🇹🇳",
+      degree: "Engineering Degree - ENSI",
+      specialization: "Embedded Systems & IoT • 2022-2025"
     },
     settings: {
       title: "Settings",
@@ -40,7 +43,10 @@ export const translations = {
       techStack: "Stack Technique",
       finalProject: "Projet de Fin d'Études",
       education: "Éducation",
-      viewGithub: "Voir sur GitHub →"
+      viewGithub: "Voir sur GitHub →",
+      country: "Tunisie 🇹🇳",
+      degree: "Diplôme d'Ingénieur - ENSI",
+      specialization: "Systèmes Embarqués & IoT • 2022-2025"
     },
     settings: {
       title: "Paramètres",
@@ -65,7 +71,10 @@ export const translations = {
       techStack: "التقنيات",
       finalProject: "مشروع التخرج",
       education: "التعليم",
-      viewGithub: "اضغط للعرض على GitHub ←"
+      viewGithub: "اضغط للعرض على GitHub ←",
+      country: "تونس 🇹🇳",
+      degree: "شهادة مهندس - المدرسة الوطنيّة لعلوم الإعلامية",
+      specialization: "الأنظمة المدمجة و إنترنت الأشياء • 2022-2025"
     },
     settings: {
       title: "الإعدادات",

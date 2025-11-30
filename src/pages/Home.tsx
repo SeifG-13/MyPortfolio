@@ -133,7 +133,7 @@ export function Home() {
             </div>
             <div className="relative z-10">
               <p className="text-xs text-white/60 uppercase tracking-wide font-medium mb-0.5">{t.home.location}</p>
-              <p className="text-sm font-bold leading-tight">Tunisia 🇹🇳</p>
+              <p className="text-sm font-bold leading-tight">{t.home.country}</p>
             </div>
           </motion.div>
 
@@ -234,8 +234,8 @@ export function Home() {
               </div>
               <div className="flex-1">
                 <p className="text-xs text-white/60 uppercase tracking-wide font-medium mb-1">{t.home.education}</p>
-                <h4 className="text-sm font-bold">Engineering Degree - ENSI</h4>
-                <p className="text-xs text-white/50">Embedded Systems & IoT • 2022-2025</p>
+                <h4 className="text-sm font-bold">{t.home.degree}</h4>
+                <p className="text-xs text-white/50">{t.home.specialization}</p>
               </div>
             </div>
           </motion.div>
