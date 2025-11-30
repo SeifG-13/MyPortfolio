@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2 } from "lucide-react";
+import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck } from "lucide-react";
 import { useSettings } from "@/context/SettingsContext"; // Import Context
 
 // Helper component for Unavailable Popups
@@ -163,7 +163,7 @@ const projectsData = [
     badgeBorder: "border-indigo-200 dark:border-indigo-800",
     badgeText: "text-indigo-700 dark:text-indigo-300",
     badgeBg: "bg-indigo-50 dark:bg-indigo-900/30",
-    period: "Nov 2024", 
+    period: "Nov 2025", 
     location: "Personal",
     github: "https://github.com/SeifG-13/crypto-pipeline",
     demo: ""
@@ -187,7 +187,7 @@ const projectsData = [
     badgeBorder: "border-teal-200 dark:border-teal-800",
     badgeText: "text-teal-700 dark:text-teal-300",
     badgeBg: "bg-teal-50 dark:bg-teal-900/30",
-    period: "Aug - Oct 2024",
+    period: "Aug - Oct 2025",
     location: "Tunis",
     github: "", 
     demo: "https://paradelile.store/"
@@ -235,7 +235,7 @@ const projectsData = [
     badgeBorder: "border-amber-200 dark:border-amber-800",
     badgeText: "text-amber-700 dark:text-amber-300",
     badgeBg: "bg-amber-50 dark:bg-amber-900/30",
-    period: "2024",
+    period: "Dec 2024",
     location: "Personal / Academic",
     github: "https://github.com/SeifG-13/Secure-Sensor-Data-Visualization",
     demo: "https://secure-sensor-data-visualization-3vjb.vercel.app"
@@ -259,7 +259,7 @@ const projectsData = [
     badgeBorder: "border-cyan-200 dark:border-cyan-800",
     badgeText: "text-cyan-700 dark:text-cyan-300",
     badgeBg: "bg-cyan-50 dark:bg-cyan-900/30",
-    period: "2023",
+    period: "Nov 2024",
     location: "ENSI",
     github: "https://github.com/SeifG-13/smart-city",
     demo: ""
@@ -283,12 +283,35 @@ const projectsData = [
     badgeBorder: "border-violet-200 dark:border-violet-800",
     badgeText: "text-violet-700 dark:text-violet-300",
     badgeBg: "bg-violet-50 dark:bg-violet-900/30",
-    period: "Updated Oct 2024",
+    period: "Updated Oct 2025",
     location: "Open Source",
     github: "https://github.com/SeifG-13/dotnet-api-guide",
     demo: "https://seifbenali.notion.site/dotnet-api-guide"
   },
 
+  // 📚 EDUCATION - Big Data Interview Guide
+  {
+    title: "Big Data Interview Prep",
+    subtitle: language === 'ar' ? "دليل المقابلات الشامل" : "Comprehensive Interview Guide",
+    category: language === 'fr' ? "Ressource Éducative" : language === 'ar' ? "مصدر تعليمي" : "Educational Resource",
+    description: language === 'fr'
+      ? "Guide complet pour les entretiens d'ingénieur Big Data. Documentation détaillée, checklists et environnements Docker pour Airflow, Kafka, Spark et Hadoop."
+      : language === 'ar'
+      ? "دليل شامل لمقابلات مهندس البيانات الضخمة. وثائق مفصلة وقوائم مراجعة وبيئات Docker لـ Airflow و Kafka و Spark و Hadoop."
+      : "Complete guide for Big Data Engineer interviews. Detailed documentation, checklists, and Docker environments for Airflow, Kafka, Spark, and Hadoop.",
+    technologies: ["Apache Airflow", "Kafka", "Spark", "Hadoop", "Docker"],
+    icon: ClipboardCheck,
+    bgAccent: "bg-sky-500",
+    iconColor: "text-sky-600 dark:text-sky-400",
+    iconBg: "bg-sky-50 dark:bg-sky-900/20",
+    badgeBorder: "border-sky-200 dark:border-sky-800",
+    badgeText: "text-sky-700 dark:text-sky-300",
+    badgeBg: "bg-sky-50 dark:bg-sky-900/30",
+    period: "Nov 2025",
+    location: "Open Source",
+    github: "https://github.com/SeifG-13/bigdata-stack-essentials",
+    demo: ""
+  },
   // 🎮 BACKEND - .NET 9 API
   {
     title: "Video Game API",
@@ -307,7 +330,7 @@ const projectsData = [
     badgeBorder: "border-rose-200 dark:border-rose-800",
     badgeText: "text-rose-700 dark:text-rose-300",
     badgeBg: "bg-rose-50 dark:bg-rose-900/30",
-    period: "2024",
+    period: "Oct 2025",
     location: "Personal",
     github: "https://github.com/SeifG-13/VideoGameApi",
     demo: ""
@@ -331,7 +354,7 @@ const projectsData = [
     badgeBorder: "border-blue-200 dark:border-blue-800",
     badgeText: "text-blue-700 dark:text-blue-300",
     badgeBg: "bg-blue-50 dark:bg-blue-900/30",
-    period: "Jun - Jul 2024",
+    period: "Jun - Aug 2024",
     location: "Get Wireless, Tunis",
     github: "https://github.com/SeifG-13/Smart_home",
     demo: ""
@@ -403,7 +426,7 @@ const projectsData = [
     badgeBorder: "border-indigo-200 dark:border-indigo-800",
     badgeText: "text-indigo-700 dark:text-indigo-300",
     badgeBg: "bg-indigo-50 dark:bg-indigo-900/30",
-    period: "2023",
+    period: "Updated Apr 2024",
     location: "Personal",
     github: "https://github.com/SeifG-13/policediscordbot",
     demo: ""
