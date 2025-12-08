@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck, Cloud } from "lucide-react";
+import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck, Cloud, Gauge } from "lucide-react";
 import { useSettings } from "@/context/SettingsContext"; // Import Context
 
 // Helper component for Unavailable Popups
@@ -156,7 +156,7 @@ const projectsData = [
       ? "خط أنابيب بيانات شامل على Azure. استيعاب البيانات في الوقت الفعلي، والمعالجة عبر Event Hubs، والتخزين في PostgreSQL والتصور باستخدام Grafana."
       : "End-to-end data engineering pipeline on Azure. Real-time ingestion (CoinGecko), processing via Event Hubs/Functions, PostgreSQL storage, and Grafana visualization.",
     technologies: ["Azure Event Hubs", "Azure Functions", "PostgreSQL", "Grafana", "Python"],
-    icon: Cloud, // Ensure you import { Cloud } from 'lucide-react'
+    icon: Cloud, 
     bgAccent: "bg-sky-600",
     iconColor: "text-sky-600 dark:text-sky-400",
     iconBg: "bg-sky-50 dark:bg-sky-900/20",
@@ -165,7 +165,7 @@ const projectsData = [
     badgeBg: "bg-sky-50 dark:bg-sky-900/30",
     period: "Nov - Dec 2025",
     location: "Personal / Cloud",
-    github: "https://github.com/SeifG-13/azure-crypto-pipeline",
+    github: "https://github.com/SeifG-13/crypto-pipeline-azure",
     demo: ""
   },
 
@@ -180,7 +180,7 @@ const projectsData = [
       ? "منصة للمراقبة وتحليل السجلات في الوقت الفعلي. تجميع Kafka، ومعالجة Spark Streaming، ولوحات معلومات Prometheus/Grafana مع تنبيهات آلية."
       : "Real-time monitoring platform. Log collection via Kafka, Spark Streaming processing, and Prometheus/Grafana dashboards with automated alerting.",
     technologies: ["Kafka", "Spark", "Elasticsearch", "Prometheus", "Docker"],
-    icon: Activity, // Ensure you import { Activity } from 'lucide-react'
+    icon: Gauge, 
     bgAccent: "bg-indigo-600",
     iconColor: "text-indigo-600 dark:text-indigo-400",
     iconBg: "bg-indigo-50 dark:bg-indigo-900/20",
@@ -189,7 +189,7 @@ const projectsData = [
     badgeBg: "bg-indigo-50 dark:bg-indigo-900/30",
     period: "Dec 2025",
     location: "Personal Project",
-    github: "https://github.com/SeifG-13/service-monitor-platform",
+    github: "https://github.com/SeifG-13/Service-Monitor-Log-Analytics-Platform",
     demo: ""
   },
   
