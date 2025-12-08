@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck } from "lucide-react";
+import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck, Cloud } from "lucide-react";
 import { useSettings } from "@/context/SettingsContext"; // Import Context
 
 // Helper component for Unavailable Popups
@@ -143,6 +143,54 @@ const projectsData = [
     location: "NOVEL-TI, Sfax",
     github: "https://github.com/SeifG-13/AgriTrace",
     demo: "https://www.linkedin.com/posts/seif-ben-ali_blockchain-hyperledger-reactjs-activity-7355254805830758400-njPh"
+  },
+  
+  // 🚀 NEW - Azure Cloud Data Engineering
+  {
+    title: "Azure Crypto Pipeline",
+    subtitle: language === 'ar' ? "هندسة البيانات السحابية" : "Cloud Data Engineering",
+    category: language === 'fr' ? "Projet Cloud Azure" : language === 'ar' ? "مشروع سحابي" : "Azure Cloud Project",
+    description: language === 'fr'
+      ? "Pipeline de données complet sur Azure. Ingestion temps réel (CoinGecko), traitement via Event Hubs/Functions, stockage PostgreSQL et visualisation Grafana."
+      : language === 'ar'
+      ? "خط أنابيب بيانات شامل على Azure. استيعاب البيانات في الوقت الفعلي، والمعالجة عبر Event Hubs، والتخزين في PostgreSQL والتصور باستخدام Grafana."
+      : "End-to-end data engineering pipeline on Azure. Real-time ingestion (CoinGecko), processing via Event Hubs/Functions, PostgreSQL storage, and Grafana visualization.",
+    technologies: ["Azure Event Hubs", "Azure Functions", "PostgreSQL", "Grafana", "Python"],
+    icon: Cloud, // Ensure you import { Cloud } from 'lucide-react'
+    bgAccent: "bg-sky-600",
+    iconColor: "text-sky-600 dark:text-sky-400",
+    iconBg: "bg-sky-50 dark:bg-sky-900/20",
+    badgeBorder: "border-sky-200 dark:border-sky-800",
+    badgeText: "text-sky-700 dark:text-sky-300",
+    badgeBg: "bg-sky-50 dark:bg-sky-900/30",
+    period: "Nov - Dec 2025",
+    location: "Personal / Cloud",
+    github: "https://github.com/SeifG-13/azure-crypto-pipeline",
+    demo: ""
+  },
+
+  // 🔧 NEW - Service Monitor & Log Analytics
+  {
+    title: "Service Monitor Platform",
+    subtitle: language === 'ar' ? "تحليل السجلات والمراقبة" : "Log Analytics & Monitoring",
+    category: language === 'fr' ? "DevOps / Big Data" : language === 'ar' ? "ديف أوبس / بيانات ضخمة" : "DevOps / Big Data",
+    description: language === 'fr'
+      ? "Plateforme de monitoring temps réel. Collecte de logs avec Kafka, traitement Spark Streaming, et tableaux de bord Prometheus/Grafana avec alertes automatisées."
+      : language === 'ar'
+      ? "منصة للمراقبة وتحليل السجلات في الوقت الفعلي. تجميع Kafka، ومعالجة Spark Streaming، ولوحات معلومات Prometheus/Grafana مع تنبيهات آلية."
+      : "Real-time monitoring platform. Log collection via Kafka, Spark Streaming processing, and Prometheus/Grafana dashboards with automated alerting.",
+    technologies: ["Kafka", "Spark", "Elasticsearch", "Prometheus", "Docker"],
+    icon: Activity, // Ensure you import { Activity } from 'lucide-react'
+    bgAccent: "bg-indigo-600",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    iconBg: "bg-indigo-50 dark:bg-indigo-900/20",
+    badgeBorder: "border-indigo-200 dark:border-indigo-800",
+    badgeText: "text-indigo-700 dark:text-indigo-300",
+    badgeBg: "bg-indigo-50 dark:bg-indigo-900/30",
+    period: "Dec 2025",
+    location: "Personal Project",
+    github: "https://github.com/SeifG-13/service-monitor-platform",
+    demo: ""
   },
   
   // 🥈 BIG DATA - Real-time Streaming Pipeline
