@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck, Cloud, Gauge } from "lucide-react";
+import { ExternalLink, Github, Blocks, Home, ShoppingCart, Brain, Database, GitBranch, Server, MapPin, Calendar, X, Info, Activity, BookOpen, ShieldCheck,Shield, MessageSquare, Gamepad2, ClipboardCheck, Cloud, Gauge, GraduationCap } from "lucide-react";
 import { useSettings } from "@/context/SettingsContext"; // Import Context
 
 // Helper component for Unavailable Popups
@@ -313,6 +313,29 @@ const projectsData = [
     demo: ""
   },
 
+  // 📚 EDUCATION - Azure Big Data Interview Prep
+  {
+    title: "Azure Big Data Interview Prep",
+    subtitle: language === 'ar' ? "دليل مقابلات Azure الشامل" : "Azure Big Data Interview Guide",
+    category: language === 'fr' ? "Ressource Éducative" : language === 'ar' ? "مصدر تعليمي" : "Educational Resource",
+    description: language === 'fr'
+      ? "Guide complet de préparation aux entretiens Azure. 36 guides techniques, architectures de référence, scripts de déploiement et checklists pour Data Engineers."
+      : language === 'ar'
+      ? "دليل شامل للتحضير لمقابلات Azure. يحتوي على 36 دليلًا تقنيًا، ونماذج معمارية، ونصوص نشر، وقوائم مراجعة لمهندسي البيانات."
+      : "Comprehensive Azure interview prep guide. Features 36 technical guides, reference architectures, deployment scripts, and checklists for Data Engineers.",
+    technologies: ["Azure Data Factory", "Synapse Analytics", "Databricks", "ADLS Gen2", "Bicep"],
+    icon: GraduationCap, 
+    bgAccent: "bg-blue-600",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    iconBg: "bg-blue-50 dark:bg-blue-900/20",
+    badgeBorder: "border-blue-200 dark:border-blue-800",
+    badgeText: "text-blue-700 dark:text-blue-300",
+    badgeBg: "bg-blue-50 dark:bg-blue-900/30",
+    period: "Dec 2025",
+    location: "Open Source",
+    github: "https://github.com/SeifG-13/azure-bigdata-essentials",
+    demo: ""
+  },
   // 📚 OPEN SOURCE - .NET Reference Guide
   {
     title: "ASP.NET Core API Guide",
