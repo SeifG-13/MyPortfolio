@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "optimize:images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
@@ -33,9 +35,11 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.14",
     "terser": "^5.44.1",
     "typescript": "~5.6.3",
-    "vite": "^6.0.5"
+    "vite": "^6.0.5",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
