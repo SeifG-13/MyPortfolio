@@ -20,24 +20,30 @@ const PageLoader = memo(function PageLoader() {
   );
 });
 
-// Memoized background component - prevents re-renders
+// Memoized background component - uses COMPOSITED properties only (opacity, transform)
+// PERF: Removed CSS filter animation (non-composited = full repaint every frame)
+// Instead uses opacity layers which the GPU compositor handles at 60fps
 const Background = memo(function Background({ isBlurred }: { isBlurred: boolean }) {
   return (
     <>
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-500 ease-out"
-        style={{ 
+      {/* Base image layer - static, no transitions */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
           backgroundImage: `url(${bgImage})`,
-          // PERFORMANCE: Simplified filter - removed scale transform
-          filter: isBlurred ? "brightness(0.4) blur(16px)" : "brightness(0.9)",
-          // PERFORMANCE: GPU acceleration
+          filter: "brightness(0.9)",
           transform: "translateZ(0)",
         }}
       />
-      <div 
-        className={`absolute inset-0 z-0 bg-black/10 transition-opacity duration-400 ${
-          isBlurred ? "opacity-50" : "opacity-0"
-        }`} 
+      {/* Dark overlay - PURE opacity transition (no backdrop-filter = zero repaint cost) */}
+      <div
+        className={`absolute inset-0 z-0 transition-opacity duration-300 ease-out ${
+          isBlurred ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          background: "rgba(0, 0, 0, 0.65)",
+          transform: "translateZ(0)",
+        }}
       />
     </>
   );
@@ -60,14 +66,15 @@ function AppContent() {
       {/* Background Layer - Memoized */}
       <Background isBlurred={isModalOpen} />
 
-      {/* Main Content - PERFORMANCE: Simplified animation */}
-      <main 
-        className={`relative z-10 h-full w-full transition-all duration-400 ease-out ${
-          isModalOpen 
-            ? "scale-95 opacity-0 pointer-events-none" 
-            : "scale-100 opacity-100"
+      {/* Main Content - PERF: Only transition composited properties (transform + opacity) */}
+      <main
+        className={`relative z-10 h-full w-full transition-[transform,opacity] duration-300 ease-out ${
+          isModalOpen ? "pointer-events-none" : ""
         }`}
-        style={{ transform: isModalOpen ? "scale(0.95) translateY(8px)" : "scale(1) translateY(0)" }}
+        style={{
+          transform: isModalOpen ? "scale(0.95) translateY(8px) translateZ(0)" : "scale(1) translateY(0) translateZ(0)",
+          opacity: isModalOpen ? 0 : 1,
+        }}
       >
         <Home />
       </main>

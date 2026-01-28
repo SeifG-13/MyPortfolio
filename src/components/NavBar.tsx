@@ -24,11 +24,12 @@ export function NavBar({ activeTab, setActiveTab }: NavBarProps) {
       <nav 
         className="pointer-events-auto relative flex items-center gap-1 sm:gap-2 rounded-[32px] px-2 py-2 shadow-2xl overflow-hidden"
         style={{
-            background: "rgba(255, 255, 255, 0.15)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
+            background: "rgba(255, 255, 255, 0.18)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
             boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2)",
-            borderTop: "1px solid rgba(255, 255, 255, 0.4)"
+            borderTop: "1px solid rgba(255, 255, 255, 0.4)",
+            transform: "translateZ(0)",
         }}
       >
         <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
@@ -48,22 +49,23 @@ export function NavBar({ activeTab, setActiveTab }: NavBarProps) {
                     <motion.div
                       layoutId="liquid-bubble"
                       className="absolute inset-0 rounded-[20px] bg-gradient-to-b from-white to-white/90 shadow-lg"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
                     />
                   )}
                   <div className="relative z-10 flex flex-col items-center gap-0.5">
                     <motion.div
                         animate={{ y: isActive ? -2 : 0, scale: isActive ? 1.1 : 1 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     >
                         <Icon 
-                        className={cn("h-5 w-5 transition-colors duration-500", isActive ? "text-black fill-black/10" : "text-white/80")} 
+                        className={cn("h-5 w-5 transition-colors duration-200", isActive ? "text-black fill-black/10" : "text-white/80")}
                         strokeWidth={isActive ? 2.5 : 2}
                         />
                     </motion.div>
                     <motion.span
                         initial={false}
                         animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.5, y: isActive ? 0 : 8 }}
+                        transition={{ duration: 0.15 }}
                         className="text-[9px] font-bold text-black"
                     >
                         {item.label}

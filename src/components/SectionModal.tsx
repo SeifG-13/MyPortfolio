@@ -11,7 +11,7 @@ interface SectionModalProps {
   children: ReactNode;
 }
 
-// FIX: Properly typed animation variants
+// PERF: Fast tween animations instead of springs (more predictable, fewer frames)
 const backdropVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
@@ -20,20 +20,19 @@ const backdropVariants: Variants = {
 
 const modalVariants: Variants = {
   hidden: { y: "100%", opacity: 0 },
-  visible: { 
-    y: 0, 
+  visible: {
+    y: 0,
     opacity: 1,
-    transition: { 
-      type: "spring",
-      damping: 35,
-      stiffness: 400,
-      mass: 0.8
+    transition: {
+      type: "tween",
+      duration: 0.28,
+      ease: [0.32, 0.72, 0, 1],
     }
   },
-  exit: { 
-    y: "100%", 
+  exit: {
+    y: "100%",
     opacity: 0,
-    transition: { duration: 0.25, ease: [0.32, 0.72, 0, 1] } 
+    transition: { duration: 0.2, ease: [0.32, 0.72, 0, 1] }
   }
 };
 
@@ -51,21 +50,17 @@ export const SectionModal = memo(function SectionModal({
     if (info.offset.y > 150) onClose();
   }, [onClose]);
 
-  // PERFORMANCE: Reduced backdrop-blur from 40px to 16px
-  const modalStyles = isDark 
+  // PERF: Near-opaque background eliminates need for heavy backdrop-filter
+  const modalStyles = isDark
     ? {
-        background: "linear-gradient(180deg, rgba(15, 23, 42, 0.97) 0%, rgba(30, 41, 59, 0.95) 100%)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+        background: "linear-gradient(180deg, rgba(15, 23, 42, 0.99) 0%, rgba(30, 41, 59, 0.98) 100%)",
         borderTop: "1px solid rgba(148, 163, 184, 0.15)",
         borderLeft: "1px solid rgba(148, 163, 184, 0.08)",
         borderRight: "1px solid rgba(148, 163, 184, 0.08)",
         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.6)"
       }
     : {
-        background: "linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.97) 100%)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+        background: "linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.99) 100%)",
         borderTop: "1px solid rgba(255, 255, 255, 0.95)",
         borderLeft: "1px solid rgba(255, 255, 255, 0.6)",
         borderRight: "1px solid rgba(255, 255, 255, 0.6)",
@@ -73,22 +68,22 @@ export const SectionModal = memo(function SectionModal({
       };
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop - reduced blur */}
+          {/* Backdrop - PERF: removed backdrop-blur, use solid overlay (composited) */}
           <motion.div
             key="backdrop"
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
-            className={`fixed inset-0 backdrop-blur-[8px] z-40 ${
-              isDark ? "bg-black/70" : "bg-black/30"
+            className={`fixed inset-0 z-40 ${
+              isDark ? "bg-black/70" : "bg-black/40"
             }`}
-            style={{ willChange: "opacity" }}
+            style={{ transform: "translateZ(0)" }}
           />
           
           {/* Modal */}
@@ -103,9 +98,9 @@ export const SectionModal = memo(function SectionModal({
             dragElastic={0.15}
             onDragEnd={handleDragEnd}
             className="fixed bottom-0 left-0 right-0 top-10 md:top-20 md:bottom-20 z-50 mx-auto max-w-3xl overflow-hidden rounded-t-[40px] md:rounded-[48px] shadow-2xl flex flex-col"
-            style={{ 
+            style={{
               ...modalStyles,
-              willChange: "transform, opacity" 
+              transform: "translateZ(0)",
             }}
           >
             {/* Simplified sheen */}
@@ -134,7 +129,7 @@ export const SectionModal = memo(function SectionModal({
                 variant="ghost" 
                 size="icon" 
                 onClick={onClose} 
-                className={`rounded-full h-10 w-10 transition-all duration-200 shadow-sm ${
+                className={`rounded-full h-10 w-10 transition-colors duration-200 shadow-sm ${
                   isDark 
                     ? "bg-slate-700/60 hover:bg-slate-600/70 text-slate-200 border border-slate-600/40" 
                     : "bg-white/50 hover:bg-white/70 text-gray-700 border border-white/60"

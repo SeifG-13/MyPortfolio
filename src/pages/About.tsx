@@ -219,11 +219,12 @@ export function About() {
         </h3>
         <div className="space-y-3">
           {skills.map((skillGroup, i) => (
-            <motion.div 
+            <motion.div
               key={i}
-              initial={{ opacity: 0, x: isRTL ? 20 : -20 }} // RTL animation fix
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
+              initial={{ opacity: 0, x: isRTL ? 12 : -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.2, delay: Math.min(i * 0.05, 0.15) }}
               className="rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm"
             >
               <div className="flex items-center gap-3 mb-3">
@@ -255,11 +256,12 @@ export function About() {
         </h3>
         <div className="space-y-4">
           {experience.map((job, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15 }}
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.2, delay: Math.min(i * 0.06, 0.15) }}
               className="relative rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-5 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-start justify-between mb-2">
@@ -338,7 +340,7 @@ export function About() {
         <Button 
           variant="outline" 
           size="icon" 
-          className="rounded-full h-12 w-12 border-gray-200 dark:border-gray-700 dark:bg-white/5 hover:bg-gray-900 hover:text-white hover:border-gray-900 dark:hover:bg-white dark:hover:text-black transition-all"
+          className="rounded-full h-12 w-12 border-gray-200 dark:border-gray-700 dark:bg-white/5 hover:bg-gray-900 hover:text-white hover:border-gray-900 dark:hover:bg-white dark:hover:text-black transition-colors"
           onClick={() => window.open('https://github.com/SeifG-13', '_blank')}
         >
           <Github className="h-5 w-5" />
@@ -346,7 +348,7 @@ export function About() {
         <Button 
           variant="outline" 
           size="icon" 
-          className="rounded-full h-12 w-12 border-gray-200 dark:border-gray-700 dark:bg-white/5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
+          className="rounded-full h-12 w-12 border-gray-200 dark:border-gray-700 dark:bg-white/5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
           onClick={() => window.open('https://linkedin.com/in/seif-ben-ali', '_blank')}
         >
           <Linkedin className="h-5 w-5" />
@@ -354,7 +356,7 @@ export function About() {
         <Button 
           variant="outline" 
           size="icon" 
-          className={`rounded-full h-12 w-12 border-gray-200 dark:border-gray-700 dark:bg-white/5 transition-all ${
+          className={`rounded-full h-12 w-12 border-gray-200 dark:border-gray-700 dark:bg-white/5 transition-colors ${
             copiedEmail 
               ? "bg-green-500 text-white border-green-500" 
               : "hover:bg-red-500 hover:text-white hover:border-red-500"

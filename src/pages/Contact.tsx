@@ -178,7 +178,7 @@ export function Contact() {
       
       {/* Header */}
       <div className="rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 p-6 text-center text-white shadow-lg">
-        <div className="h-16 w-16 mx-auto mb-4 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+        <div className="h-16 w-16 mx-auto mb-4 rounded-2xl bg-white/20 flex items-center justify-center">
           <Mail className="h-8 w-8" />
         </div>
         <h3 className="text-xl font-bold">{t.header}</h3>
@@ -191,7 +191,7 @@ export function Contact() {
           href="https://linkedin.com/in/seif-ben-ali"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-all group"
+          className="flex items-center gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-[colors,box-shadow,border-color] group"
         >
           <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
             <Linkedin className="h-5 w-5" />
@@ -207,7 +207,7 @@ export function Contact() {
           href="https://github.com/SeifG-13"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-500 transition-all group"
+          className="flex items-center gap-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-500 transition-[colors,box-shadow,border-color] group"
         >
           <div className="h-10 w-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 group-hover:bg-gray-900 group-hover:text-white transition-colors">
             <Github className="h-5 w-5" />
@@ -224,7 +224,7 @@ export function Contact() {
       <div className="space-y-3">
         <button 
           onClick={() => copyToClipboard("seif.benali@ensi-uma.tn", 'email')}
-          className="w-full flex items-center gap-4 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-all group text-start"
+          className="w-full flex items-center gap-4 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-[colors,box-shadow,border-color] group text-start"
         >
           <div className={`flex h-12 w-12 items-center justify-center rounded-full transition-colors ${
             copiedEmail 
@@ -246,7 +246,7 @@ export function Contact() {
         
         <button 
           onClick={() => copyToClipboard("+21655845694", 'phone')}
-          className="w-full flex items-center gap-4 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-green-200 dark:hover:border-green-500/50 transition-all group text-start"
+          className="w-full flex items-center gap-4 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-md hover:border-green-200 dark:hover:border-green-500/50 transition-[colors,box-shadow,border-color] group text-start"
         >
           <div className={`flex h-12 w-12 items-center justify-center rounded-full transition-colors ${
             copiedPhone 
@@ -358,7 +358,7 @@ export function Contact() {
             <Button 
               type="submit"
               disabled={status === "loading"}
-              className="h-12 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-lg font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all disabled:opacity-70 text-white"
+              className="h-12 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-lg font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-[box-shadow,opacity] disabled:opacity-70 text-white"
             >
               {status === "loading" ? (
                 <>

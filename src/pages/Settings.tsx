@@ -58,7 +58,7 @@ export function Settings() {
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setTheme(themeOption.code as "light" | "dark")}
                 className={cn(
-                  "relative overflow-hidden rounded-2xl border-2 p-5 transition-all duration-300",
+                  "relative overflow-hidden rounded-2xl border-2 p-5 transition-[colors,border-color,box-shadow,transform] duration-200",
                   isActive 
                     ? themeOption.colors.active + " shadow-lg scale-[1.02]"
                     : "bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10"
@@ -66,7 +66,7 @@ export function Settings() {
               >
                 {/* Preview window */}
                 <div className={cn(
-                  "h-16 w-full rounded-xl mb-4 border transition-all overflow-hidden",
+                  "h-16 w-full rounded-xl mb-4 border transition-[border-color] overflow-hidden",
                   isActive ? "border-current/20" : "border-gray-200 dark:border-white/10"
                 )}>
                   <div className={cn("h-full w-full", themeOption.preview)}>
@@ -156,7 +156,7 @@ export function Settings() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setLanguage(lang.code as any)}
                 className={cn(
-                  "flex w-full items-center justify-between rounded-xl border-2 p-4 transition-all duration-300",
+                  "flex w-full items-center justify-between rounded-xl border-2 p-4 transition-[colors,border-color,box-shadow,transform] duration-200",
                   isActive
                     ? "border-blue-400 bg-blue-50/80 dark:bg-blue-900/30 dark:border-blue-500 shadow-md"
                     : "border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-200 dark:hover:border-white/20"
