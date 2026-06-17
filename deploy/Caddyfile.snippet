@@ -1,0 +1,38 @@
+# Append this block to paradelile's Caddyfile:
+#   /opt/paradelile/src/deploy/Caddyfile
+# Then reload Caddy:
+#   docker exec -w /etc/caddy paradelile-caddy caddy reload
+
+# ── seifbenali.com ────────────────────────────────────────────
+seifbenali.com, www.seifbenali.com {
+
+    # HTTP-01 challenge — Caddy auto-issues & renews the Let's Encrypt cert
+    tls seifbenali24@gmail.com
+
+    encode zstd gzip
+
+    @www host www.seifbenali.com
+    redir @www https://seifbenali.com{uri} permanent
+
+    # Strip Accept-Encoding so the portfolio nginx returns plaintext;
+    # Caddy then re-compresses with zstd/gzip on the way out.
+    reverse_proxy portfolio:80 {
+        header_up -Accept-Encoding
+    }
+
+    header {
+        X-Frame-Options           "DENY"
+        X-Content-Type-Options    "nosniff"
+        Referrer-Policy           "strict-origin-when-cross-origin"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        -Server
+    }
+
+    log {
+        output file /data/seifbenali-access.log {
+            roll_size 10mb
+            roll_keep 5
+        }
+        format json
+    }
+}

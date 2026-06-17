@@ -1,0 +1,21 @@
+services:
+
+  portfolio:
+    image: ghcr.io/seifg-13/portfolio:latest
+    container_name: portfolio
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: "0.25"
+    networks:
+      - caddy_net
+
+networks:
+  # Reuse paradelile's existing Caddy network so paradelile-caddy can
+  # reverse_proxy to the `portfolio` container by name. Created by the
+  # paradelile stack (compose project "deploy").
+  caddy_net:
+    external: true
+    name: deploy_caddy_net
